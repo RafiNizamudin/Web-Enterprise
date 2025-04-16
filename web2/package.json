@@ -1,0 +1,21 @@
+{
+  "name": "web2",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "buat latihan npm",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "npm"
+  ],
+  "author": "Razif",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.8.4",
+    "dotenv": "^16.4.7"
+  }
+}
