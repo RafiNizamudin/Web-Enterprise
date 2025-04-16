@@ -12,7 +12,7 @@
   "keywords": [
     "npm"
   ],
-  "author": "Razif",
+  "author": "Rafi",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.8.4",
