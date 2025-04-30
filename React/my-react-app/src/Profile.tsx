@@ -1,16 +1,21 @@
+import Button from "./button";
 
-function Profile() {
+
+type Props ={
+  name: string;
+}
+
+export default function Profile({name}: Props) {
 
     return (
       <>    
             <h1>
-                Rafi Nizamudin
+                Hai
             </h1>    
-            <h2 className="bio">
-                Mahasiswa Universitas Mercu Buana
+            <h2 >
+                hi, {name}!
             </h2>
+            <Button flag='hello' />
       </>
     )
   }
-  
-  export default Profile
