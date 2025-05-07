@@ -1,5 +1,5 @@
 import './App.css'
-import Button from './button.tsx'
+import Button from './Button.tsx'
 import Profile from './Profile.tsx'
 import UserCard from './UserCard.tsx'
 
