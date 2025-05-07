@@ -1,21 +1,19 @@
-import Button from "./button";
+import { PropHello } from "./Profile.dto";
 
 
-type Props ={
-  name: string;
-}
-
-export default function Profile({name}: Props) {
+export default function Profile({name, gender, umur=15}: PropHello) {
 
     return (
-      <>    
-            <h1>
-                Hai
-            </h1>    
-            <h2 >
-                hi, {name}!
+      <>       
+            <h1 >
+                Hi, {name}!
+            </h1>
+            <h2>
+              My Gender: {gender}
             </h2>
-            <Button flag='hello' />
+            <h2>
+              Umur Saya: {umur}
+            </h2>
       </>
     )
   }
