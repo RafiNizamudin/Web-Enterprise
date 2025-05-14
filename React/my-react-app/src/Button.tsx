@@ -1,19 +1,10 @@
-import './buttons.css'
+import './Button.css';
+import { ButtonProps } from './Button.dto';
 
-type buttonprops = {
-    flag: string;
-}
-
-export default function Button({flag}: buttonprops) {
-    function click() {
-        alert('Tombol Click')
-    }
-
-    function clicktrue(){
-        alert('Tombol Click True')
-    }
-
-    return <button className='tombol' onClick={flag == 'hello' ? clicktrue : click}>
-        Click Me
-    </button>
+export default function Button({ flag, handleClick, handleClickTrue }: ButtonProps) {
+    return (
+        <button className="tombol" onClick={flag === 'Hello' ? handleClickTrue : handleClick}>
+            Click
+        </button>
+    );
 }
