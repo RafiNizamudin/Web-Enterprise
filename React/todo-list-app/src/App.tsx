@@ -1,38 +1,55 @@
 import './App.css'
+import { useEffect, useState } from 'react';
 import { TodoItem } from './components/Todoltem'
-import type { TodoItemProps } from './TodoItem.dto';
+import type { todoDto } from './dtos/todo.dto';
+import supabase from './utils/supabase';
 
 export default function App() {
+  const [todos, setTodos] = useState<todoDto[]>([]);
+
+  useEffect(() => {
+    async function getTodos() {
+      
+      const { data: dataTodos, error } = await supabase.from('todos').select();
+
+      console.log('data todos', dataTodos)
+      if (error) {
+        console.log('error', error);
+      }
+      if (dataTodos) {
+        setTodos(dataTodos)
+      }
+    }
+
+    getTodos();
+  }, [])
+
   const onHandleMarkDone = (id: number) => {
-    console.log(`Todo with id: ${id} is marked to done`);
-  }
+    setTodos(todos.map(todo =>
+      todo.id === id ? {...todo, status: 1} : todo
+    ));
+  };
 
   const onHandleDelete = (id: number) => {
-    console.log(`Todo with id: ${id} is Deleted`);
-  }
-
-  const todos: TodoItemProps[] = [
-    { id: 1, todo: 'Belajar React', status: 1, isDeleted: 0, onMarkDone: onHandleMarkDone, onDelete: onHandleDelete},
-    { id: 2, todo: 'Belajar Project', status: 0, isDeleted: 0, onMarkDone: onHandleMarkDone, onDelete: onHandleDelete},
-    { id: 3, todo: 'Belajar Vite', status: 1, isDeleted: 0, onMarkDone: onHandleMarkDone, onDelete: onHandleDelete},
-    { id: 4, todo: 'Belajar JS', status: 0, isDeleted: 0, onMarkDone: onHandleMarkDone, onDelete: onHandleDelete},
-    { id: 5, todo: 'Belajar HTML', status: 1, isDeleted: 0, onMarkDone: onHandleMarkDone, onDelete: onHandleDelete},
-    { id: 6, todo: 'Belajar Python', status: 0, isDeleted: 0, onMarkDone: onHandleMarkDone, onDelete: onHandleDelete},
-  ];
+    setTodos(todos.map(todo =>
+      todo.id === id ? {...todo, is_deleted: 1} : todo
+    ));
+  };
 
   return (
       <div>
         <h1>Todo List</h1>
         <button onClick={() => {}}>+ Add Todo</button>
-
         <ul>
           { todos 
-            .filter(todo => todo.isDeleted === 0)
+            .filter(todo => todo.is_deleted === 0)
             .map(todo => (
               <TodoItem
                 key={todo.id}
                 {...todo}
-              />
+                onMarkDone={onHandleMarkDone}
+                onDelete={onHandleDelete}              
+                />
             ))}
         </ul>
       </div>
