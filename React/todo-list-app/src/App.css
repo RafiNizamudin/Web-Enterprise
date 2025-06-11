@@ -2,3 +2,32 @@
   margin: 0 auto;
   text-align: center;
 }
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgb(0, 0, 0, 0,3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 20px;
+  border-radius: 6px;
+  width: 500px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0,2);
+}
+
+.modal-content input[type="text"] {
+  width: 80%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  outline: none;
+  transition: border-color 0,2s ease;
+}
